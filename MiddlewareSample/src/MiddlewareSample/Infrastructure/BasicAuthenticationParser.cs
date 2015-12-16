@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using Microsoft.AspNet.Http;
+using Microsoft.Extensions.Primitives;
 
 namespace MiddlewareSample.Infrastructure
 {
@@ -37,7 +38,7 @@ namespace MiddlewareSample.Infrastructure
         {
             try
             {
-                string[] authHeader;
+                StringValues authHeader;
                 if (context.Request.Headers.TryGetValue("Authorization", out authHeader) &&
                     authHeader.Any() &&
                     authHeader[0].StartsWith("Basic "))
